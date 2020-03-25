@@ -1,1 +1,1 @@
-*.sp -linguistic-detectable
+*.sp linguistic-detectable=false
