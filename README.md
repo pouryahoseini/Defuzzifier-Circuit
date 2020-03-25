@@ -11,7 +11,7 @@ The complete description of the design and implementation can be found in our pa
 To implement this structure, the below circuit is used, which instead of using the traditional multiplier-divider style, uses transconductance amplifiers (TCA) as a multiplier with voltage-input current-output by exploiting the voltage follower aggregation principle to increase speed and reduce chip area:
 
 <p align="center">
-  <img src="./docs/circuit.jpg" alt="Defuzzifier circuit" height=200/>
+  <img src="./docs/circuit.jpg" alt="Defuzzifier circuit" height=250/>
 </p>
 
 The circuit inside the frame is the TCA. Outside of that is shared among all the transconductance amplifies. 
