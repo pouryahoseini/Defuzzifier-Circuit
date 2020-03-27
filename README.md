@@ -28,7 +28,7 @@ The error for the same output is negligible compared to the scale of the output:
 </p>
 
 ## The Code
-The Defuzzifier is implemented in HSPICE for simulation in the CMOS 0.35 &#956;m process. In the time of the original simulations, a TSMC 0.35 &#956;m library file was used. You may use other libraries, probably with some minor alterations. There is one netlist file under the *netlist* directory that contains the code to the circuit and performs DC sweep, transient, and corner tests in simulation.
+The Defuzzifier is implemented in HSPICE for simulation in the CMOS 0.35 &#956;m process. In the time of the original simulations, a TSMC 0.35 &#956;m technology file was used. You may use other technology files, probably with some minor alterations. There is one netlist file under the *netlist* directory that contains the code to the circuit and performs DC sweep, transient, and corner tests in simulation.
 
 # Cite
 You may refer to this work by citing our published [paper](https://doi.org/10.1109/ICEDSA.2010.5503081).
