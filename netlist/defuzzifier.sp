@@ -1,17 +1,18 @@
 Defuzzifier circuit
 
+* Sources
 .global	vdd
 
 vdd	vdd	0	3.3
-
 iq	vdd	b1	12u
-
 vb	vb	0	0.55
 
 *cload	out	0	100f		******No CLoad
 
+* Initial condition
 .ic v(out)=1
 
+* Input signals
 vcon1	vcon1	vcn1	pulse(1.2	1.2	0.1u	10n	10n	90n	200n)
 vcon2	vcon2	vcn2	pulse(1.2	1.1	0.1u	10n	10n	90n	200n)		****range between: 0 v to 1.2 v
 vcon3	vcon3	vcn3	pulse(1.2	0.9	0.1u	10n	10n	90n	200n)		****frequncy: 5 MHz
@@ -52,18 +53,20 @@ vinf5	vinf5	0	1.6
 vinf6	vinf6	0	1.75
 vinf7	vinf7	0	1.9
 
+* Circuit shared among all transconductance amplifiers
 m19	b1	b1	0	0	nch	l=0.4u	w=0.8u
 m20	b2	b1	0	0	nch	l=0.4u	w=0.8u
 m21	b2	b2	vdd	vdd	pch	l=0.4u	w=2.4u
-*****************
+***
 m22	halfout	b2	vdd	vdd	pch	l=0.4u	w=2.4u
 m23	halfout	halfout	vhalf	0	nch	l=1u	w=0.4u
 m24	vhalf	b1	0	0	nch	l=0.4u	w=0.8u
-****************1
+***
 m25	vdd	out	vhalf	0	nch	l=0.4u	w=4u
 m26	vhalf	out	0	0	nch	l=0.4u	w=0.4u
-*****************
+****
 
+* Instances of transconductance amplifier
 x1	vinf1	halfout	vcon1	vcn1	out	b1	b2	ota
 x2	vinf2	halfout	vcon2	vcn2	out	b1	b2	ota
 x3	vinf3	halfout	vcon3	vcn3	out	b1	b2	ota
@@ -72,8 +75,8 @@ x5	vinf5	halfout	vcon5	vcn5	out	b1	b2	ota
 x6	vinf6	halfout	vcon6	vcn6	out	b1	b2	ota
 x7	vinf7	halfout	vcon7	vcn7	out	b1	b2	ota
 
+* Transconductance amplifier
 .subckt	ota	vinf	halfout	vcon	vcn	out	b1	b2
-
 m1	1	halfout	3	0	nch	l=0.4u	w=1u
 m2	2	atvinf	3	0	nch	l=0.4u	w=1u
 m3	1	atvinf	4	0	nch	l=0.4u	w=1u
@@ -90,21 +93,25 @@ m10	out	2	vdd	vdd	pch	l=0.4u	w=6u
 m11	7	7	0	0	nch	l=0.4u	w=1u
 m12	out	7	0	0	nch	l=0.4u	w=2u
 
-*****************
+***
 m13	vdd	vinf	bcm	0	nch	l=0.4u	w=4u
 m14	bcm	vinf	0	0	nch	l=0.4u	w=0.4u
-*****************
+***
 
 m15	atvinf	b2	vdd	vdd	pch	l=0.4u	w=2.4u
 m16	atvinf	atvinf	bcm	0	nch	l=1u	w=0.4u
 m17	bcm	b1	0	0	nch	l=0.4u	w=0.8u
-
 .ends
 
+*** Test settings
+* Operating point
 .op
 .option	post
 
+* Transient
 .tran	10p	1u
+
+* DC sweep
 .dc	vcon1	0	1.2	0.05
 .dc	vcon2	0	1.2	0.05
 .dc	vcon3	0	1.2	0.05
@@ -113,8 +120,10 @@ m17	bcm	b1	0	0	nch	l=0.4u	w=0.8u
 .dc	vcon6	0	1.2	0.05
 .dc	vcon7	0	1.2	0.05
 
+* Define technology file
 .lib	'mm0355v.l'	tt
 
+* Corners
 .alter
 .temp=0
 .alter
