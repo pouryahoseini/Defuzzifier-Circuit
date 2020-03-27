@@ -32,6 +32,16 @@ The Defuzzifier is implemented in HSPICE for simulation in the CMOS 0.35 &#956;m
 
 # Cite
 You may refer to this work by citing our published [paper](https://doi.org/10.1109/ICEDSA.2010.5503081).
+```
+@inproceedings{hoseini2010circuit,
+  title={Circuit design of voltage mode center of gravity defuzzifier in CMOS process},
+  author={Hoseini, Pourya and Khoei, Abdollah and Hadidi, Khayrollah},
+  booktitle={2010 International Conference on Electronic Devices, Systems and Applications},
+  pages={169--173},
+  year={2010},
+  organization={IEEE}
+}
+```
 
 # Contact
 I can be reached at hoseini@nevada.unr.edu.
